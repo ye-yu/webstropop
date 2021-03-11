@@ -1,0 +1,5 @@
+#!/bin/bash
+mkdir private || echo 'Directory "private" already exists'
+mkdir cert || echo 'Directory "cert" already exists'
+openssl genrsa -des3 -out private/rootCA.key 4096
+openssl req -x509 -new -nodes -key private/rootCA.key -sha256 -days 3650 -out cert/rootCA.pem
